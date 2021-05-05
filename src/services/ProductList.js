@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const ProductList = () => {
+
+  
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
@@ -13,6 +15,10 @@ const ProductList = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  const clicAddCar = (e) =>{
+    e.preventDefault();
+  }
 
   const renderedPosts = Object.values(posts).map(post => {
     return (
@@ -27,7 +33,7 @@ const ProductList = () => {
                 <span className="float-start">
                   {post.price} $
                 </span>
-                <a className="float-end"><i className="fas fa-cart-plus"></i></a>
+                <button onClick={clicAddCar} className="btn float-end"><i className="fas fa-cart-plus"></i></button>
             </div>
         </div>
         </div> 
